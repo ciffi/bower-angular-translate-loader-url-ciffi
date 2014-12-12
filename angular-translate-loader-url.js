@@ -36,7 +36,7 @@ angular.module('pascalprecht.translate')
 
     $http(angular.extend({
       url: options.url,
-      params: requestParams,
+      //params: requestParams,
       method: 'GET'
     }, options.$http)).success(function (data) {
       deferred.resolve(data);
