@@ -21,7 +21,7 @@ angular.module('pascalprecht.translate')
  * @param {object} options Options object, which gets the url, key and
  * optional queryParameter ('lang' is used by default).
  */
-.factory('$translateUrlLoader', ['$q', '$http', function ($q, $http) {
+.factory('$translateUrlLoader', ['$rootScope','$q', '$http', function ($rootScope, $q, $http) {
 
   return function (options) {
 
@@ -39,6 +39,7 @@ angular.module('pascalprecht.translate')
       //params: requestParams,
       method: 'GET'
     }, options.$http)).success(function (data) {
+      $rootScope.$broadcast('translation__downloaded');
       deferred.resolve(data);
     }).error(function (data) {
       deferred.reject(options.key);
